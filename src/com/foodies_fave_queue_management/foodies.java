@@ -1,5 +1,6 @@
 package com.foodies_fave_queue_management;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class foodies {
@@ -8,12 +9,15 @@ public class foodies {
     public static int Cashier2_customNumber =0;
     public static int Cashier3_customNumber =0;
 
+
     public static void main(String[] args) {
         String[] Cashier_1= new String[2];
         String[] Cashier_2= new String[3];
         String[] Cashier_3= new String[5];
 
         int Burger_Stock= 50;
+
+
 
         System.out.println("\n\n                  ** Welcome to Foodies Burger Shop! **\n\n ");
 
@@ -115,9 +119,7 @@ public class foodies {
 
 
 
-    private static void RemoveCustomer(String[] cashier1, String[] cashier2, String[] cashier3) {
-        System.out.println("Hello");
-    }
+
 
 
     private static void viewsAllCabins(String[] cashier1, String[] cashier2, String[] cashier3) {
@@ -160,7 +162,13 @@ public class foodies {
     }
 
     private static void ViewEmptyCabins(String[] cashier1, String[] cashier2, String[] cashier3) {
+
+
     }
+
+
+
+
 
     private static void addMethod(String[] cashier1, String[] cashier2, String[] cashier3, int burgerStock) {
         Scanner input = new Scanner(System.in);
@@ -186,7 +194,7 @@ public class foodies {
                     if (Cashier1_customNumber <cashier1.length){
                         System.out.println("  **There can be Two Customers in this Queue.** ");
                         if (Cashier1_customNumber>0){
-                            System.out.println("There are already "+Cashier1_customNumber+" Customers here.");
+                            System.out.println("There is already "+Cashier1_customNumber+" Customer here.");
                         }
 
                         Scanner input2 = new Scanner(System.in);
@@ -215,7 +223,7 @@ public class foodies {
                         System.out.println("This Cashier Queue has been fulled by Customers. Please select another Cashier Queue.");
                     }
                 }
-                if (Cashier_Nb==2){
+                else if (Cashier_Nb==2){
 
 
                     if (Cashier2_customNumber <cashier2.length){
@@ -252,7 +260,7 @@ public class foodies {
                     }
                 }
 
-                if (Cashier_Nb==3){
+                else if (Cashier_Nb==3){
 
 
                     if (Cashier3_customNumber <cashier3.length){
@@ -300,8 +308,136 @@ public class foodies {
         }while (!(Cashier_Nb>0 && Cashier_Nb<4));
 
 
+    }
 
 
+
+    private static void RemoveCustomer(String[] cashier1, String[] cashier2, String[] cashier3) {
+
+        int Cashier_Nb=0;
+        do {
+            Scanner input= new Scanner(System.in);
+            try {
+                System.out.print("First Enter Cashier Number :");
+                Cashier_Nb=input.nextInt();
+
+                if (Cashier_Nb==1){
+                    Scanner input3= new Scanner(System.in);
+
+                    boolean value_1= true;
+
+                    while (value_1){
+
+                        if (Cashier1_customNumber==0){
+                            System.out.println("Try Again!!.  There aren't anyone in this Queue yet.");
+                            break;
+                        }
+
+                        System.out.print("Enter Customer Name : ");
+                        String Name=input3.nextLine();
+
+                        for (int i=0;i<cashier1.length;i++){
+                            if (Objects.equals(cashier1[i], Name)){
+                                cashier1[i]=null;
+                                Cashier1_customNumber--;
+                                System.out.println("   "+Name + " is removing from the Queue 1 ");
+                                value_1=false;
+                                break;
+                            }
+                            /*else {
+                                //value_1=true;
+                            }*/
+
+                        }
+
+                        if (value_1){
+                            System.out.println("Try Again!!. Please Check Customer's Name.");
+                            //value_1=true;
+                        }
+
+                    }
+
+
+                }
+                else if (Cashier_Nb==2){
+
+                    Scanner input3= new Scanner(System.in);
+
+                    boolean value_2= true;
+
+                    while (value_2){
+
+                        if (Cashier2_customNumber==0){
+                            System.out.println("Try Again!!.  There aren't anyone in this Queue yet.");
+                            break;
+                        }
+
+                        System.out.print("Enter Customer Name : ");
+                        String Name=input3.nextLine();
+
+                        for (int i=0;i<cashier2.length;i++){
+                            if (Objects.equals(cashier2[i], Name)){
+                                cashier2[i]=null;
+                                Cashier2_customNumber--;
+                                System.out.println("   "+Name + " is removing from the Queue 1 ");
+                                value_2=false;
+                                break;
+                            }
+
+                        }
+
+                        if (value_2){
+                            System.out.println("Try Again!!. Please Check Customer's Name.");
+                            //value_1=true;
+                        }
+
+                    }
+
+                }
+
+                else if (Cashier_Nb==3){
+                    Scanner input3= new Scanner(System.in);
+
+                    boolean value_3= true;
+
+                    while (value_3){
+
+                        if (Cashier3_customNumber==0){
+                            System.out.println("Try Again!!.  There aren't anyone in this Queue yet.");
+                            break;
+                        }
+
+                        System.out.print("Enter Customer Name : ");
+                        String Name=input3.nextLine();
+
+                        for (int i=0;i<cashier3.length;i++){
+                            if (Objects.equals(cashier3[i], Name)){
+                                cashier3[i]=null;
+                                Cashier3_customNumber--;
+                                System.out.println("   "+Name + " is removing from the Queue 1 ");
+                                value_3=false;
+                                break;
+                            }
+                        }
+
+                        if (value_3){
+                            System.out.println("Try Again!!. Please Check Customer's Name.");
+                        }
+
+                    }
+
+                }
+                else {
+                    System.out.println("  Please Enter a valid Cashier Number among 1-3.");
+                }
+
+            }catch (Exception e){
+                System.out.println("Error!!           Please Enter a Valid Integer Cashier Number ");
+                String junk2 = input.next();
+            }
+
+
+        }while(!(Cashier_Nb>0 && Cashier_Nb<4));
 
 
     }

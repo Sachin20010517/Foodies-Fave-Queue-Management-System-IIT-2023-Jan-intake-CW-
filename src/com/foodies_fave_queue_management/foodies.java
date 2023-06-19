@@ -1,5 +1,9 @@
 package com.foodies_fave_queue_management;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -9,13 +13,13 @@ public class foodies {
     public static int Cashier2_customNumber =0;
     public static int Cashier3_customNumber =0;
 
+    public static int Burger_Stock= 50;
+
 
     public static void main(String[] args) {
         String[] Cashier_1= new String[2];
         String[] Cashier_2= new String[3];
         String[] Cashier_3= new String[5];
-
-        int Burger_Stock= 50;
 
 
 
@@ -62,7 +66,7 @@ public class foodies {
                 case "102":
                     System.out.println("\n-----------------------------------------------------------------------------------");
                     System.out.println("                             ADD CUSTOMER TO A QUEUE                                 \n");
-                    addMethod(Cashier_1,Cashier_2,Cashier_3,Burger_Stock);
+                    addMethod(Cashier_1,Cashier_2,Cashier_3);
                     break;
 
 
@@ -74,33 +78,39 @@ public class foodies {
                 case "104":
                     System.out.println("\n-----------------------------------------------------------------------------------");
                     System.out.println("                             Remove a Served Customer                                \n");
-                    Remove_Served_Customer(Cashier_1,Cashier_2,Cashier_3,Burger_Stock);
+                    Remove_Served_Customer(Cashier_1,Cashier_2,Cashier_3);
                     break;
-                case "105":
+                case "1O5":
+                    System.out.println("\n-----------------------------------------------------------------------------------");
+                    System.out.println("                    View Customers Sorted in alphabetical order                     \n");
+                    SortMethod(Cashier_1,Cashier_2,Cashier_3);
+                    break;
+                case "106":
                     System.out.println("\n-----------------------------------------------------------------------------------");
                     System.out.println("                             Store program data into file                             \n");
                     Save(Cashier_1,Cashier_2,Cashier_3);
                     break;
-                case "106":
+                case "107":
                     System.out.println("\n-----------------------------------------------------------------------------------");
                     System.out.println("                              TO LOAD PREVIOUS PROGRAM                             \n");
                     Lord(Cashier_1,Cashier_2,Cashier_3);
                     break;
-                /*case "O":
-                    System.out.println("\n-----------------------------------------------------------------------------------");
-                    System.out.println("                   View passengersOrdered alphabetically by name                   \n");
-                    SortMethod(Cashier_1,Cashier_2,Cashier_3);
-                    break;
-                case "T":
-                    System.out.println("\n-----------------------------------------------------------------------------------");
-                    System.out.println("\n             Expenses per passenger & Total Expenses of all passengers           \n");
 
+                case "108":
+                    System.out.println("\n-----------------------------------------------------------------------------------");
+                    System.out.println("\n                      View Remaining burgers Stock                               \n");
+                    Remaining_Burgers();
                     break;
-                case "Q":
-                    System.out.println("\n                          You exited from the program.                              ");
+                case "109":
+                    System.out.println("\n-----------------------------------------------------------------------------------");
+                    System.out.println("\n                       Add burgers to Stock                                      \n");
+                    Add_Burgers();
+                    break;
+                case "999":
+                    System.out.println("\n                          You Exited from the Program.                              ");
                     System.out.println("                            Thank You!!                                        ");
                     break;
-                    */
+
                 default:
                     System.out.println("Please Enter Valid Character");
             }
@@ -108,17 +118,58 @@ public class foodies {
         }while (!(option.equals("999")));
     }
 
-    private static void Lord(String[] cashier1, String[] cashier2, String[] cashier3) {
+    private static void Add_Burgers() {
+        System.out.println("\n                       ** Foodies Burger Stock **                                          \n\n");
+        System.out.print("How many burgers are you gonna add ? : ________");
+        Scanner input5 = new Scanner(System.in);
+        int adding_Burgers=input5.nextInt();
+        Burger_Stock+=adding_Burgers;
+        System.out.println("\n\n          It has been updated Successfully ! ");
+        System.out.println("Now,\n    Total Burgers = "+Burger_Stock);
     }
 
+    private static void Remaining_Burgers() {
+        System.out.println("\n| ******************************************************************************************|");
+        System.out.println("|                       ** Foodies Burger Stock **                                          |");
+        System.out.println("|                                                                                           |");
+        System.out.println("|      Current Remaining Burgers = "+Burger_Stock+"                                                       | ");
+        System.out.println("|                                                                                           |");
+        System.out.println("|                                                                                           |");
+        System.out.println("| ******************************************************************************************|\n");
 
 
-    private static void Save(String[] cashier1, String[] cashier2, String[] cashier3) {
+
+        if (Burger_Stock<=10){
+            System.out.println("\n              Warning!!\nThe Burger Stock is close to Finish.");
+        }
     }
 
+    private static void SortMethod(String[] cashier1, String[] cashier2, String[] cashier3) {
+        System.out.println("jello");
+        /*
+        Arrays.sort(cashier1);
+        System.out.print("Cashier 1 : ");
+        for (String i:cashier1){
+            System.out.print(i+",  ");
+        }
+        System.out.println("\n");
+
+        Arrays.sort(cashier2);
+        System.out.print("Cashier 2 : ");
+        for (String i:cashier2){
+            System.out.print(i+",  ");
+        }
+        System.out.println("\n");
+
+        Arrays.sort(cashier3);
+        System.out.print("Cashier 3 : ");
+        for (String i:cashier3){
+            System.out.print(i+",  ");
+        }
 
 
-
+         */
+    }
 
 
     private static void viewsAllCabins(String[] cashier1, String[] cashier2, String[] cashier3) {
@@ -226,6 +277,60 @@ public class foodies {
 
     private static void ViewEmptyCabins(String[] cashier1, String[] cashier2, String[] cashier3) {
 
+        System.out.println("                     ** Empty Queues **  ");
+
+
+        if (IsEmpty1(cashier1)) {
+            System.out.println("\nCashier 1 Queue  is  Empty\n\n");
+        } /*else {
+            System.out.println("Array 1 is not empty.");
+        }
+        */
+
+        if (IsEmpty2(cashier2)) {
+            System.out.println("Cashier 2 Queue  is  Empty\n\n");
+        }/* else {
+            System.out.println("Array 2 is not empty.");
+        }*/
+
+        if (IsEmpty3(cashier3)) {
+            System.out.println("Cashier 3 Queue  is  Empty\n");
+        } /*else {
+            System.out.println("Array 3 is not empty.");
+        }*/
+
+
+
+
+    }
+    public static boolean IsEmpty1(String[] cashier1){
+
+        for (String s : cashier1) {
+            if (s != null) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+    private static boolean IsEmpty2(String[] cashier2){
+
+        for (String s : cashier2) {
+            if (s != null) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+    public static boolean IsEmpty3(String[] cashier3){
+
+        for (String s : cashier3) {
+            if (s != null) {
+                return false;
+            }
+        }
+        return true;
 
     }
 
@@ -233,7 +338,7 @@ public class foodies {
 
 
 
-    private static void addMethod(String[] cashier1, String[] cashier2, String[] cashier3, int burgerStock) {
+    private static void addMethod(String[] cashier1, String[] cashier2, String[] cashier3) {
         Scanner input = new Scanner(System.in);
        /* System.out.print("Enter Customer Name :");
         String Name=input.nextLine();
@@ -282,10 +387,10 @@ public class foodies {
 
 
 
-                            if (burgerStock<purchased_Burgers || burgerStock<1){
+                            if (Burger_Stock<purchased_Burgers || Burger_Stock<1){
                                 System.out.println("\n| ************************************************************************************************************************************************************************ |");
                                 System.out.println("|                                                          Sorry!!                                                                                                         |");
-                                System.out.println("| There aren't enough burgers in the Stock for this demand. In this moment there are just "+(burgerStock)+" in the stock. Please Enter less than "+(burgerStock)+" Burger                                |");
+                                System.out.println("| There aren't enough burgers in the Stock for this demand. In this moment there are just "+(Burger_Stock)+" in the stock. Please Enter less than "+(Burger_Stock)+" Burger                                |");
                                 System.out.println("| ************************************************************************************************************************************************************************ |\n");
                                 burgerExist=false;
 
@@ -293,13 +398,13 @@ public class foodies {
 
                             else {
                                 System.out.println("   "+Name+" has purchased "+purchased_Burgers+" Burgers");
-                                burgerStock-=purchased_Burgers;
+                                Burger_Stock-=purchased_Burgers;
                                 burgerExist=true;
 
                             }
 
                         }
-                        if (burgerStock<=10 && (!(burgerStock <1))){
+                        if (Burger_Stock<=10 && (!(Burger_Stock <1))){
                             System.out.println("\n              Warning!!\nThe Burger Stock is close to Finish.");
                         }
 
@@ -341,12 +446,12 @@ public class foodies {
                         System.out.println("     "+Name+" was added Successfully!.");
                         System.out.print("How many have burgers been purchased? : ");
                         int purchased_Burgers=input.nextInt();
-                        burgerStock-=purchased_Burgers;
+                        Burger_Stock-=purchased_Burgers;
                         System.out.println("   "+Name+" has purchased "+purchased_Burgers+" burgers Successfully!");
 
                         Cashier2_customNumber++;
 
-                        if (burgerStock<=10){
+                        if (Burger_Stock<=10){
                             System.out.println("\n              Warning!!\nThe Burger Stock is close to Finish.");
                         }
                     }
@@ -381,11 +486,11 @@ public class foodies {
                         System.out.println("     "+Name+" was added Successfully!.");
                         System.out.print("How many have burgers been purchased? : ");
                         int purchased_Burgers=input.nextInt();
-                        burgerStock-=purchased_Burgers;
+                        Burger_Stock-=purchased_Burgers;
                         System.out.println("   "+Name+" has purchased "+purchased_Burgers+" burgers Successfully!");
                         Cashier3_customNumber++;
 
-                        if (burgerStock<=10){
+                        if (Burger_Stock<=10){
                             System.out.println("\n              Warning!!\nThe Burger Stock is close to Finish.");
                         }
                     }
@@ -539,7 +644,7 @@ public class foodies {
 
     }
 
-    private static void Remove_Served_Customer(String[] cashier1, String[] cashier2, String[] cashier3, int burgerStock) {
+    private static void Remove_Served_Customer(String[] cashier1, String[] cashier2, String[] cashier3) {
 
         int Cashier_Nb=0;
         do {
@@ -571,9 +676,9 @@ public class foodies {
                                 cashier1[i]=null;
                                 Cashier1_customNumber--;
                                 System.out.println("\n       ****** The Number of Burgers "+Name+" bought has been reduced from The System *****  ");
-                                burgerStock-=purchased_Burger;
+                                Burger_Stock-=purchased_Burger;
                                 value_1=false;
-                                if (burgerStock<=10){
+                                if (Burger_Stock<=10){
                                     System.out.println("\n              Warning!!\nThe Burger Stock is close to Finish.");
                                 }
                                 break;
@@ -609,9 +714,9 @@ public class foodies {
                                 cashier2[i]=null;
                                 Cashier1_customNumber--;
                                 System.out.println("\n       ****** The Number of Burgers "+Name+" bought has been reduced from The System *****  ");
-                                burgerStock-=purchased_Burger;
+                                Burger_Stock-=purchased_Burger;
                                 value_2=false;
-                                if (burgerStock<=10){
+                                if (Burger_Stock<=10){
                                     System.out.println("\n              Warning!!\nThe Burger Stock is close to Finish.");
                                 }
                                 break;
@@ -647,9 +752,9 @@ public class foodies {
                                 cashier3[i]=null;
                                 Cashier1_customNumber--;
                                 System.out.println("\n       ****** The Number of Burgers "+Name+" bought has been reduced from The System *****  ");
-                                burgerStock-=purchased_Burger;
+                                Burger_Stock-=purchased_Burger;
                                 value_3=false;
-                                if (burgerStock<=10){
+                                if (Burger_Stock<=10){
                                     System.out.println("\n              Warning!!\nThe Burger Stock is close to Finish.");
                                 }
                                 break;
@@ -674,9 +779,119 @@ public class foodies {
 
         }while(!(Cashier_Nb>0 && Cashier_Nb<4));
 
+    }
+
+
+
+
+
+    private static void Save(String[] cashier1, String[] cashier2, String[] cashier3) {
+        try {
+            FileWriter file_writer = new FileWriter("Foodies.txt");
+
+            //file_writer.write("Cashier1 : ");
+            for (String i :cashier1){
+                if (i == null){
+                    file_writer.write("null");
+                }
+                else {
+                    file_writer.write(i);
+                }
+            }
+            file_writer.write("\n");
+
+            for (String j :cashier2){
+                if (j == null){
+                    file_writer.write("null");
+                }
+                else {
+                    file_writer.write(j);
+                }
+            }
+            file_writer.write("\n");
+
+            for (String z :cashier3){
+                if (z == null){
+                    file_writer.write("null");
+                }
+                else {
+                    file_writer.write(z);
+                }
+            }
+            //file_writer.write("\n\n\n");
+
+            //file_writer.write("Burger Stock :  "+Burger_Stock);
+            file_writer.close();
+
+
+        }catch (Exception e){
+            System.out.println("Error is : "+e);
+        }
+        System.out.println("\n              Successfully saved to the file          ");
+    }
+
+
+
+
+    private static void Lord(String[] cashier1, String[] cashier2, String[] cashier3) {
+
+        System.out.println("\n                           --**The Program Loaded Successfully--**\n ");
+
+        try {
+            File file_ = new File("Foodies.txt");
+            Scanner fileReader = new Scanner(file_);
+
+            int x=1;
+            while (fileReader.hasNextLine()){
+                String line =fileReader.nextLine();
+
+                if (x==1){
+                    System.out.print("\nCashier 1 : ");
+                    //String saved_line1= fileReader.nextLine();
+                    for (int i=0;i<cashier1.length;i++){
+                        //cashier1[i]=String.valueOf(saved_line1);
+                        cashier1[i]= String.valueOf(line.formatted(i));
+                        System.out.print(cashier1[i]+", ");
+                    }
+                    System.out.println();
+                }
+                if (x==2){
+                    System.out.print("\nCashier 2 : ");
+                    //String saved_line2= fileReader.nextLine();
+                    for (int i=0;i<cashier2.length;i++){
+                        //cashier2[i]=String.valueOf(saved_line2.charAt(i));
+                        cashier2[i]= String.valueOf(line.formatted(i));
+                        System.out.print(cashier2[i]+", ");
+                    }
+                    System.out.println();
+                }
+                if (x==3){
+                    System.out.print("\nCashier 3 : ");
+                    //String saved_line3= fileReader.nextLine();
+                    for (int i=0;i< cashier3.length;i++){
+                       // cashier3[i]=String.valueOf(saved_line3.charAt(i));
+                        cashier3[i]= String.valueOf(line.formatted(i));
+                        System.out.print(cashier3[i]+", ");
+                    }
+                    System.out.println();
+                }
+                x++;
+
+            }
+            fileReader.close();
+
+
+        }catch (IOException e){
+            System.out.println("Error is : "+e);
+        }
+
 
 
     }
+
+
+
+
 
 
 }

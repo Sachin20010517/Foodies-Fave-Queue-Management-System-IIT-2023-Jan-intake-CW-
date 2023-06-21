@@ -3,17 +3,20 @@ package com.foodies_fave_queue_management;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.Arrays;
 
-public class foodies {
+public class Foodies {
 
     public static int Cashier1_customNumber =0;
     public static int Cashier2_customNumber =0;
     public static int Cashier3_customNumber =0;
 
     public static int Burger_Stock= 50;
+
+    public static ArrayList<String> burgerArraylist= new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -43,7 +46,9 @@ public class foodies {
             System.out.println("   107) Load Program Data from file");
             System.out.println("   108) View Remaining burgers Stock");
             System.out.println("   109) Add burgers to Stock");
+            System.out.println("   110) The Income of each queues");
             System.out.println("         999) Exit the Program");
+
             System.out.println("------------------------------------------------------------------------------------");
 
             System.out.print("\nPlease Enter Your Option : _ _ _ _ ");
@@ -80,10 +85,11 @@ public class foodies {
                     System.out.println("                             Remove a Served Customer                                \n");
                     Remove_Served_Customer(Cashier_1,Cashier_2,Cashier_3);
                     break;
-                case "1O5":
+                case "105":
                     System.out.println("\n-----------------------------------------------------------------------------------");
                     System.out.println("                    View Customers Sorted in alphabetical order                     \n");
                     SortMethod(Cashier_1,Cashier_2,Cashier_3);
+
                     break;
                 case "106":
                     System.out.println("\n-----------------------------------------------------------------------------------");
@@ -118,6 +124,164 @@ public class foodies {
         }while (!(option.equals("999")));
     }
 
+    private static void SortMethod(String[] cashier1, String[] cashier2, String[] cashier3) {
+
+        int r1=cashier1.length;
+        boolean swapped;
+
+        for (int i=0;i<r1-1;i++){
+            swapped=false;
+            for (int j=0;j<r1-i-1;j++){
+                if (compareString(cashier1[j],cashier1[j+1])>0){
+                    String temp=cashier1[j];
+                    cashier1[j]=cashier1[j+1];
+                    cashier1[j+1]=temp;
+                    swapped=true;
+                }
+            }
+            if (!swapped){
+                break;
+            }
+        }
+
+        int r2=cashier2.length;
+        for (int i=0;i<r2-1;i++){
+            swapped=false;
+            for (int j=0;j<r2-i-1;j++){
+                if (compareString(cashier2[j],cashier2[j+1])>0){
+                    String temp=cashier2[j];
+                    cashier2[j]=cashier2[j+1];
+                    cashier2[j+1]=temp;
+                    swapped=true;
+                }
+            }
+            if (!swapped){
+                break;
+            }
+        }
+
+        int r3=cashier3.length;
+        for (int i=0;i<r3-1;i++){
+            swapped=false;
+            for (int j=0;j<r3-i-1;j++){
+                if (compareString(cashier3[j],cashier3[j+1])>0){
+                    String temp=cashier3[j];
+                    cashier3[j]=cashier3[j+1];
+                    cashier3[j+1]=temp;
+                    swapped=true;
+                }
+            }
+            if (!swapped){
+                break;
+            }
+        }
+
+
+
+        /*
+        System.out.print("Cashier 1 Queue : ");
+        for (String i:cashier1){
+            System.out.print(i+", ");
+        }
+        System.out.println();
+
+         */
+        System.out.print("Cashier 1 Queue : ");
+        for (int i=0;i<cashier1.length;i++){
+            if (cashier1[i]!=null){
+                System.out.print(cashier1[1]+", ");
+            }
+            else {
+                System.out.print("free, ");
+            }
+        }
+        System.out.println();
+
+
+        /*
+        System.out.print("\nCashier 2 Queue : ");
+        for (String i:cashier2){
+            System.out.print(i+", ");
+        }
+        System.out.println();
+
+         */
+
+        System.out.print("Cashier 2 Queue : ");
+        for (int i=0;i<cashier2.length;i++){
+            if (cashier2[i]!=null){
+                System.out.print(cashier2[1]+", ");
+            }
+            else {
+                System.out.print("free, ");
+            }
+        }
+        System.out.println();
+
+
+        System.out.print("\nCashier 3 Queue : ");
+        for (String i:cashier3){
+            System.out.print(i+", ");
+        }
+        System.out.println();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+        Arrays.sort(cashier1);
+        System.out.print("Cashier 1 : ");
+        for (String i:cashier1){
+            System.out.print(i+",  ");
+        }
+        System.out.println("\n");
+
+        Arrays.sort(cashier2);
+        System.out.print("Cashier 2 : ");
+        for (String i:cashier2){
+            System.out.print(i+",  ");
+        }
+        System.out.println("\n");
+
+        Arrays.sort(cashier3);
+        System.out.print("Cashier 3 : ");
+        for (String i:cashier3){
+            System.out.print(i+",  ");
+        }
+
+         */
+    }
+
+    public static int compareString(String str_1,String str_2){
+        if (str_1==null && str_2==null){
+            return 0;
+        } else if (str_1==null) {
+            return 1;
+
+        }else if (str_2==null) {
+            return -1;
+        }else {
+            return str_1.compareTo(str_2);
+        }
+    }
+
+    
+
+
     private static void Add_Burgers() {
         System.out.println("\n                       ** Foodies Burger Stock **                                          \n\n");
         System.out.print("How many burgers are you gonna add ? : ________");
@@ -144,32 +308,6 @@ public class foodies {
         }
     }
 
-    private static void SortMethod(String[] cashier1, String[] cashier2, String[] cashier3) {
-        System.out.println("jello");
-        /*
-        Arrays.sort(cashier1);
-        System.out.print("Cashier 1 : ");
-        for (String i:cashier1){
-            System.out.print(i+",  ");
-        }
-        System.out.println("\n");
-
-        Arrays.sort(cashier2);
-        System.out.print("Cashier 2 : ");
-        for (String i:cashier2){
-            System.out.print(i+",  ");
-        }
-        System.out.println("\n");
-
-        Arrays.sort(cashier3);
-        System.out.print("Cashier 3 : ");
-        for (String i:cashier3){
-            System.out.print(i+",  ");
-        }
-
-
-         */
-    }
 
 
     private static void viewsAllCabins(String[] cashier1, String[] cashier2, String[] cashier3) {
@@ -181,96 +319,92 @@ public class foodies {
         twoDimensionalArray[2]=cashier3;
 
 
-        System.out.format("\n%24s","******************\n");
-        System.out.format("%24s","*    Cashiers    *\n");
-        System.out.format("%25s","******************\n\n");
+        System.out.format("\n%22s","******************\n");
+        System.out.format("%22s","*    Cashiers    *\n");
+        System.out.format("%23s","******************\n\n");
 
 
 
         int maxLength = Math.max(cashier1.length, Math.max(cashier2.length, cashier3.length));
 
-        // Print the arrays in the desired pattern
         for (int i = 0; i < maxLength; i++) {
             if (i < twoDimensionalArray[0].length) {
-                System.out.print(twoDimensionalArray[0][i] + "\t");
+                if (twoDimensionalArray[0][i]!=null){
+                    System.out.format("%3s","");
+                    System.out.print("X" + "\t");
+                }
+                else {
+                    System.out.format("%3s","");
+                    System.out.print("O" + "\t");
+                }
             } else {
+                System.out.format("%3s","");
                 System.out.print("\t\t");
             }
 
             if (i < twoDimensionalArray[1].length) {
-                System.out.print(twoDimensionalArray[1][i] + "\t");
+                if (twoDimensionalArray[1][i]!=null){
+                    System.out.format("%3s","");
+                    System.out.print("X" + "\t");
+                }
+                else {
+                    System.out.format("%3s","");
+                    System.out.print("O" + "\t");
+                }
+
             } else {
+                System.out.format("%3s","");
                 System.out.print("\t\t");
             }
 
             if (i < twoDimensionalArray[2].length) {
-                System.out.print(twoDimensionalArray[2][i]);
+                if (twoDimensionalArray[2][i]!=null){
+                    System.out.format("%3s","");
+                    System.out.print("X" + "\t");
+                }
+                else {
+                    System.out.format("%3s","");
+                    System.out.print("O" + "\t");
+                }
             }
 
             System.out.println();
         }
 
 
+
+
+
         /*
-        for (String s : cashier1) {
-            if (s == null) {
+        // View All Cabins with Customer's names
+
+        for (int i = 0; i < maxLength; i++) {
+            if (i < twoDimensionalArray[0].length) {
                 System.out.format("%5s","");
-                System.out.print("O");
-
+                System.out.print(twoDimensionalArray[0][i] + "\t");
             } else {
                 System.out.format("%5s","");
-                System.out.println("X\n");
+                System.out.print("\t\t");
             }
-        }
 
-        for (String s : cashier2) {
-            if (s == null) {
-                System.out.format("%10s","");
-                System.out.print("O\n");
-
+            if (i < twoDimensionalArray[1].length) {
+                System.out.format("%5s","");
+                System.out.print(twoDimensionalArray[1][i] + "\t");
             } else {
-                System.out.format("%10s","");
-                System.out.print("X\n");
+                System.out.format("%5s","");
+                System.out.print("\t\t");
             }
-        }
 
-        for (String s : cashier3) {
-            if (s == null) {
-                System.out.format("%20s","");
-                System.out.println("O");
-
-            } else {
-                System.out.format("%20s","");
-                System.out.println("X");
+            if (i < twoDimensionalArray[2].length) {
+                System.out.format("%5s","");
+                System.out.print(twoDimensionalArray[2][i]);
             }
+
+            System.out.println();
         }
 
          */
 
-        /*
-        for (int i=0;1<cashier3.length;i++){
-            if (cashier1[i]==null){
-                System.out.println("O");
-            }
-            if (cashier1[i]!=null){
-                System.out.println("X");
-            }
-            if (cashier2[i]==null){
-                System.out.println("O");
-            }
-            if (cashier2[i]!=null){
-                System.out.println("X");
-            }
-            if (cashier3[i]==null){
-                System.out.println("O");
-            }
-            if (cashier1[i]!=null){
-                System.out.println("X");
-            }
-
-        }
-
-         */
 
 
     }
@@ -339,9 +473,20 @@ public class foodies {
 
 
     private static void addMethod(String[] cashier1, String[] cashier2, String[] cashier3) {
+
+
         Scanner input = new Scanner(System.in);
-       /* System.out.print("Enter Customer Name :");
+        System.out.print("Enter Customer Name :");
         String Name=input.nextLine();
+        System.out.print("Enter Customer Surname :");
+        String Surname=input.nextLine();
+
+        Customer customer_Obj= new Customer(Name,Surname);
+
+        int Income_of_Queue = 0;
+
+
+        /*
         System.out.print("Enter Customer Id Number :");
         String ID = input.nextLine();
         while (ID.length()!=10){
@@ -352,22 +497,23 @@ public class foodies {
 
 
         int Cashier_Nb = 0;
+        int purchased_Burgers = 0;
         do {
             try {
-                System.out.print("Enter Cashier Number : ");
+                System.out.print("\nEnter Cashier Number : ");
                 Cashier_Nb=input.nextInt();
                 if (Cashier_Nb==1){
 
 
                     if (Cashier1_customNumber <cashier1.length){
-                        System.out.println("  **There can be Two Customers in this Queue.** ");
+                        System.out.println("Queue "+Cashier_Nb+" Details -  **There can be Two Customers in this Queue.** ");
                         if (Cashier1_customNumber>0){
-                            System.out.println("There is already "+Cashier1_customNumber+" Customer here.");
+                            System.out.println("    There is already "+Cashier1_customNumber+" Customer here.");
                         }
 
                         Scanner input2 = new Scanner(System.in);
-                        System.out.print("Enter Customer Name : ");
-                        String Name=input2.nextLine();
+                        //System.out.print("Enter Customer Name : ");
+                        //String Name=input2.nextLine();
                         /*
                         System.out.println("Enter Customer Id Number :");
                         String ID = input.nextLine();
@@ -378,12 +524,13 @@ public class foodies {
                             }
                             */
                         cashier1[Cashier1_customNumber]=Name;
-                        System.out.println("     "+Name+" was added Successfully!.");
+                        System.out.println("   ##"+Name+" "+Surname+" was added to Queue "+Cashier_Nb+"\n");
 
                         boolean burgerExist= false;
+
                         while (!burgerExist){
-                            System.out.print("How many have burgers been purchased? : ");
-                            int purchased_Burgers=input.nextInt();
+                            System.out.print("How many have burgers been purchased? :____");
+                            purchased_Burgers=input.nextInt();
 
 
 
@@ -397,16 +544,28 @@ public class foodies {
                             }
 
                             else {
-                                System.out.println("   "+Name+" has purchased "+purchased_Burgers+" Burgers");
+                                System.out.println("\n                  "+Name+" has purchased "+purchased_Burgers+" Burgers\n");
                                 Burger_Stock-=purchased_Burgers;
                                 burgerExist=true;
 
                             }
 
                         }
-                        if (Burger_Stock<=10 && (!(Burger_Stock <1))){
-                            System.out.println("\n              Warning!!\nThe Burger Stock is close to Finish.");
+                        //
+                        if (Burger_Stock<=10 && Burger_Stock>0){
+                            System.out.println("\n              Warning!!\nThe Burger Stock is close to Finish.\n");
                         }
+                        if (Burger_Stock==0){
+                            System.out.println("\n              Warning!!  Warning!!\n   The Burger Stock has finished. Please Add Burgers to the Stock\n");
+                        }
+
+
+                        FoodQueue foodQueue_Obj=new FoodQueue(customer_Obj,Income_of_Queue,Cashier_Nb,purchased_Burgers);
+                        foodQueue_Obj.setPrice(650*purchased_Burgers);
+
+                        burgerArraylist.add(foodQueue_Obj.toString());
+
+
 
 
 
@@ -423,6 +582,7 @@ public class foodies {
                 else if (Cashier_Nb==2){
 
 
+
                     if (Cashier2_customNumber <cashier2.length){
 
                         System.out.println("  **There can be Three Customers in this Queue.**");
@@ -431,8 +591,8 @@ public class foodies {
                         }
 
                         Scanner input2 = new Scanner(System.in);
-                        System.out.print("Enter Customer Name :");
-                        String Name=input2.nextLine();
+                       // System.out.print("Enter Customer Name :");
+                        //String Name=input2.nextLine();
                         /*
                         System.out.println("Enter Customer Id Number :");
                         String ID = input.nextLine();
@@ -445,7 +605,7 @@ public class foodies {
                         cashier2[Cashier2_customNumber]=Name;
                         System.out.println("     "+Name+" was added Successfully!.");
                         System.out.print("How many have burgers been purchased? : ");
-                        int purchased_Burgers=input.nextInt();
+                        //int purchased_Burgers=input.nextInt();
                         Burger_Stock-=purchased_Burgers;
                         System.out.println("   "+Name+" has purchased "+purchased_Burgers+" burgers Successfully!");
 
@@ -471,8 +631,8 @@ public class foodies {
                         }
 
                         Scanner input2 = new Scanner(System.in);
-                        System.out.print("Enter Customer Name :");
-                        String Name=input2.nextLine();
+                       // System.out.print("Enter Customer Name :");
+                        //String Name=input2.nextLine();
                         /*
                         System.out.println("Enter Customer Id Number :");
                         String ID = input.nextLine();
@@ -485,7 +645,7 @@ public class foodies {
                         cashier3[Cashier3_customNumber]=Name;
                         System.out.println("     "+Name+" was added Successfully!.");
                         System.out.print("How many have burgers been purchased? : ");
-                        int purchased_Burgers=input.nextInt();
+                        //int purchased_Burgers=input.nextInt();
                         Burger_Stock-=purchased_Burgers;
                         System.out.println("   "+Name+" has purchased "+purchased_Burgers+" burgers Successfully!");
                         Cashier3_customNumber++;
@@ -502,12 +662,14 @@ public class foodies {
                     System.out.println("  Please Enter a valid Cashier Number among 1-3.");
                 }
 
+
             }catch (Exception e){
                 System.out.println("Error!!\n  Please Enter a Valid Integer Number ");
                 String junk1 = input.next();
             }
 
         }while (!(Cashier_Nb>0 && Cashier_Nb<4));
+
 
 
     }

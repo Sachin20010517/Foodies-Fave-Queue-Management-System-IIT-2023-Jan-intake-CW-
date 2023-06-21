@@ -1,0 +1,13 @@
+
+:
+java:S2386"Make this member "protected".(¨Œ¬¹8¶Šç1
+O
+java:S1128	"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8­ô¤ç1
+ã
+java:S6541"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 73 to 64, Complexity from 18 to 14, Nesting Level from 3 to 2, Number of Variables from 19 to 6.(Ò§ãù8”‹ç1
+å
+java:S6541Û"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 106 to 64, Complexity from 20 to 14, Nesting Level from 6 to 2, Number of Variables from 17 to 6.(‹‰î8…Á¤ç1
+é
+java:S6541§"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 88 to 64, Complexity from 21 to 14, Nesting Level from 6 to 2, Number of Variables from 19 to 6.(Ä–Àûÿÿÿÿ8…Á¤ç1
+å
+java:S6541©"ÆA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 106 to 64, Complexity from 24 to 14, Nesting Level from 7 to 2, Number of Variables from 22 to 6.(ğ Æ8…Á¤ç1

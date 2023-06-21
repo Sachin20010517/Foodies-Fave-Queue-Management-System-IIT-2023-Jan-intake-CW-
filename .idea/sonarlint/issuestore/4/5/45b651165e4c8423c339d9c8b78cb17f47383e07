@@ -1,13 +1,13 @@
 
 :
-java:S2386"Make this member "protected".(¨¬Ή8¶η1
+java:S2386"Make this member "protected".(¨¬Ή8ΐφήλ1
 O
-java:S1128	"-Remove this unused import 'java.util.Arrays'.(ξ–Ιόÿÿÿÿ8­τ¤η1
+java:S1128	"-Remove this unused import 'java.util.Arrays'.(ξ–Ιόÿÿÿÿ8Θϊίλ1
 γ
-java:S6541"ΕA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 73 to 64, Complexity from 18 to 14, Nesting Level from 3 to 2, Number of Variables from 19 to 6.(Ò§γω8”‹η1
+java:S6541"ΕA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 73 to 64, Complexity from 18 to 14, Nesting Level from 3 to 2, Number of Variables from 19 to 6.(Ò§γω8έφήλ1
 ε
-java:S6541Ϋ"ΖA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 106 to 64, Complexity from 20 to 14, Nesting Level from 6 to 2, Number of Variables from 17 to 6.(‹‰ξ8…Α¤η1
+java:S6541Ϋ"ΖA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 106 to 64, Complexity from 20 to 14, Nesting Level from 6 to 2, Number of Variables from 17 to 6.(‹‰ξ8έφήλ1
 ι
-java:S6541§"ΕA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 88 to 64, Complexity from 21 to 14, Nesting Level from 6 to 2, Number of Variables from 19 to 6.(Δ–ΐϋÿÿÿÿ8…Α¤η1
+java:S6541§"ΕA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 88 to 64, Complexity from 21 to 14, Nesting Level from 6 to 2, Number of Variables from 19 to 6.(Δ–ΐϋÿÿÿÿ8έφήλ1
 ε
-java:S6541©"ΖA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 106 to 64, Complexity from 24 to 14, Nesting Level from 7 to 2, Number of Variables from 22 to 6.(π Ζ8…Α¤η1
+java:S6541©"ΖA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 106 to 64, Complexity from 24 to 14, Nesting Level from 7 to 2, Number of Variables from 22 to 6.(π Ζ8έφήλ1

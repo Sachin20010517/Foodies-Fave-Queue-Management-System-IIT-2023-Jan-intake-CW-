@@ -949,6 +949,59 @@ public class Foodies {
 
     private static void Save(String[] cashier1, String[] cashier2, String[] cashier3) {
         try {
+            FileWriter file_writer1 = new FileWriter("FoodiesQueue_1.txt");
+            FileWriter file_writer2 = new FileWriter("FoodiesQueue_2.txt");
+            FileWriter file_writer3 = new FileWriter("FoodiesQueue_3.txt");
+            FileWriter file_writer4 = new FileWriter("FoodiesQueue_4.txt");
+
+
+            for (String i :cashier1){
+                if (i == null){
+                    file_writer1.write("null");
+                }
+                else {
+                    file_writer1.write(i);
+                }
+                file_writer1.write("\n");
+            }
+            file_writer1.close();
+
+
+            for (String j :cashier2){
+                if (j == null){
+                    file_writer2.write("null");
+                }
+                else {
+                    file_writer2.write(j);
+                }
+                file_writer2.write("\n");
+            }
+            file_writer2.close();
+
+
+            for (String z :cashier3){
+                if (z == null){
+                    file_writer3.write("null");
+                }
+                else {
+                    file_writer3.write(z);
+                }
+                file_writer3.write("\n");
+            }
+            file_writer3.close();
+
+
+            file_writer4.write(String.valueOf(Burger_Stock));
+            file_writer4.close();
+            System.out.println();
+
+
+
+        }catch (Exception e){
+            System.out.println("Error is : "+e);
+        }
+        /*
+        try {
             FileWriter file_writer = new FileWriter("Foodies.txt");
 
             //file_writer.write("Cashier1 : ");
@@ -989,6 +1042,7 @@ public class Foodies {
         }catch (Exception e){
             System.out.println("Error is : "+e);
         }
+         */
         System.out.println("\n              Successfully saved to the file          ");
     }
 
@@ -999,6 +1053,106 @@ public class Foodies {
 
         System.out.println("\n                           --**The Program Loaded Successfully--**\n ");
 
+        try {
+            File file_1 = new File("FoodiesQueue_1.txt");
+
+            Scanner fileReader_1 = new Scanner(file_1);
+
+            System.out.print("\nCashier 1 : ");
+            String line1=null;
+            int j=0;
+            while (fileReader_1.hasNextLine()){
+                line1 =fileReader_1.nextLine();
+                cashier1[j]= String.valueOf(line1.formatted(j));
+                j++;
+            }
+            fileReader_1.close();
+            for (String s : cashier1) {
+                System.out.print(s + ", ");
+            }
+            System.out.println();
+
+
+        }catch (IOException e){
+            System.out.println("Error is : "+e);
+        }
+
+
+        try {
+
+            File file_2 = new File("FoodiesQueue_2.txt");
+
+            Scanner fileReader_2 = new Scanner(file_2);
+
+            System.out.print("\nCashier 2 : ");
+            String line2=null;
+            int j=0;
+            while (fileReader_2.hasNextLine()){
+                line2 =fileReader_2.nextLine();
+                cashier2[j]= String.valueOf(line2.formatted(j));
+                j++;
+            }
+            fileReader_2.close();
+            for (String s : cashier2) {
+                System.out.print(s + ", ");
+            }
+            System.out.println();
+
+        }catch (IOException e){
+            System.out.println("Error is : "+e);
+        }
+
+        try {
+            File file_3 = new File("FoodiesQueue_3.txt");
+
+            Scanner fileReader_3 = new Scanner(file_3);
+
+            System.out.print("\nCashier 3 : ");
+            String line3=null;
+            int j=0;
+            while (fileReader_3.hasNextLine()){
+                line3 =fileReader_3.nextLine();
+                cashier3[j]= String.valueOf(line3.formatted(j));
+                j++;
+            }
+            fileReader_3.close();
+            for (String s : cashier3) {
+                System.out.print(s + ", ");
+            }
+            System.out.println();
+
+
+        }catch (IOException e){
+            System.out.println("Error is : "+e);
+        }
+
+        try {
+            File file_4 = new File("FoodiesQueue_4.txt");
+
+            Scanner fileReader_4 = new Scanner(file_4);
+
+            System.out.print("\n\n     Burger Stock  : ");
+            String line4=null;
+
+            while (fileReader_4.hasNextLine()){
+                line4 =fileReader_4.nextLine();
+                Burger_Stock=Integer.parseInt(line4);
+                System.out.println(Burger_Stock);
+
+            }
+            fileReader_4.close();
+
+
+
+
+        }catch (IOException e){
+            System.out.println("Error is : "+e);
+        }
+
+
+
+
+        /*
         try {
             File file_ = new File("Foodies.txt");
             Scanner fileReader = new Scanner(file_);
@@ -1046,6 +1200,7 @@ public class Foodies {
         }catch (IOException e){
             System.out.println("Error is : "+e);
         }
+         */
 
 
 
